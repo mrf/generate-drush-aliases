@@ -18,7 +18,7 @@ function build_alias($value,$entry) {
   print PHP_EOL;
   print "\$aliases['" . $value. "'] = array(" . PHP_EOL;
   print "  'uri' => '" . $value . ".dev'," . PHP_EOL;
-  print "  'root' =>  $entry," . PHP_EOL;
+  print "  'root' =>  '$entry'," . PHP_EOL;
   print ");" . PHP_EOL;
   print PHP_EOL;
 }
