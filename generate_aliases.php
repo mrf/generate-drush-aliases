@@ -5,6 +5,14 @@ if(!is_dir($path)) {
   exit;
 }
 
+print '<?php';
+print PHP_EOL;
+print '/**' . PHP_EOL;
+print ' * Your own custom alias file courtesy of https://github.com/mrf/generate-drush-aliases' . PHP_EOL;
+print ' */';
+print PHP_EOL;
+print PHP_EOL;
+
 function build_alias($value,$entry) {
   print "// $value";
   print PHP_EOL;
