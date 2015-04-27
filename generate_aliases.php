@@ -80,18 +80,14 @@ class DrushAlias {
         $entry = $this->path . '/' . $value;
         if (is_dir($entry)) {
           chdir($entry);
+          if (!file_exists('index.php') && file_exists('docroot' . DIRECTORY_SEPARATOR . 'index.php')) {
+            $entry .= DIRECTORY_SEPARATOR . 'docroot';
+            chdir($entry);
+          }
           $version = shell_exec('drush core-status --format=list version');
           if ($version && $version !== '7.0-dev') {
             if (file_exists('index.php')) {
               $this->buildAlias($value, $entry);
-            }
-            elseif (is_dir('docroot')) {
-              if (file_exists('index.php')) {
-                // Special logic for Acquia repos.
-                chdir('docroot');
-                $entry = $entry . '/docroot';
-                $this->buildAlias($value, $entry);
-              }
             }
           }
         }
