@@ -33,10 +33,15 @@ class DrushAlias {
 
     if (file_exists(GENERATE_DRUSH_ALIASES_DEFAULT)) {
       include GENERATE_DRUSH_ALIASES_DEFAULT;
-      if (isset($defaults)) {
-        $this->defaults = $defaults;
-      }
     }
+    elseif (file_exists(dirname(__FILE__) . DIRECTORY_SEPARATOR . GENERATE_DRUSH_ALIASES_DEFAULT)) {
+      include dirname(__FILE__) . DIRECTORY_SEPARATOR . GENERATE_DRUSH_ALIASES_DEFAULT;
+    }
+
+    if (isset($defaults)) {
+      $this->defaults = $defaults;
+    }
+
   }
 
   /**
